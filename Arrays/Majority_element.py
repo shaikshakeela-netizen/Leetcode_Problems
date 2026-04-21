@@ -1,0 +1,54 @@
+'''
+🧩 Problem: Majority Element
+
+Problem Number: 169 (LeetCode)
+
+📄 Problem Statement
+
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times.
+You may assume that the majority element always exists in the array.
+
+🧠 Approach (Boyer–Moore Voting Algorithm)
+🔑 Idea:
+Maintain a candidate and a count
+If count becomes 0, choose a new candidate
+Increase count if same element
+Decrease count if different element
+
+👉 Majority element will always survive due to its higher frequency
+
+⏱️ Complexity
+Time: O(n)
+Space: O(1)
+
+'''
+class Solution:
+    def majorityElement(self, nums):
+        count = 0
+        candidate = None
+
+        for num in nums:
+            if count == 0:
+                candidate = num
+            
+            if num == candidate:
+                count += 1
+            else:
+                count -= 1
+
+        return candidate
+
+
+
+'''
+Example 1:
+
+Input: nums = [3,2,3]
+Output: 3
+Example 2:
+
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+ '''
